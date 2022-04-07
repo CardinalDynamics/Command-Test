@@ -19,14 +19,23 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
 
+    /**
+     * Left side of the drivetrain.
+     */
     private final MotorController m_leftMotor = new MotorControllerGroup(
             new CANSparkMax(Constants.frontLeftDriveMotorPort, MotorType.kBrushless),
             new CANSparkMax(Constants.backLeftDriveMotorPort, MotorType.kBrushless));
 
+    /**
+     * Right side of the drivetrain.
+     */
     private final MotorController m_rightMotor = new MotorControllerGroup(
             new CANSparkMax(Constants.frontRightDriveMotorPort, MotorType.kBrushless),
             new CANSparkMax(Constants.backRightDriveMotorPort, MotorType.kBrushless));
 
+    /**
+     * DifferentialDrive object that handles the movement of the robot.
+     */
     private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotor, m_rightMotor);
 
     // private final RelativeEncoder m_leftEncoder = new
@@ -35,6 +44,10 @@ public class DriveSubsystem extends SubsystemBase {
     // private final RelativeEncoder m_rightEncoder = new
     // CANSparkMax(Constants.frontRightDriveMotorPort,
     // MotorType.kBrushless).getEncoder();
+    
+    /**
+     * Gyroscope object that handles the rotation of the robot.
+     */
     private final Gyro m_gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
 
     // Put methods for controlling this subsystem
@@ -50,22 +63,48 @@ public class DriveSubsystem extends SubsystemBase {
         // addChild("Gyro", m_gyro);
     }
 
+    /**
+     * Logs data to the SmartDashboard.
+     */
     public void log() {
         // SmartDashboard.putNumber("Left Distance", m_leftEncoder.getPosition());
         // SmartDashboard.putNumber("Right Distance", m_rightEncoder.getPosition());
         SmartDashboard.putNumber("Gyro", m_gyro.getAngle());
     }
 
+    /**
+     * Drives the robot.
+     *
+     * @param left The speed of the left side of the drivetrain.
+     * @param right The speed of the right side of the drivetrain.
+     *
+     */
     public void drive(double left, double right) {
         m_drive.tankDrive(left, right);
     }
 
+    /**
+     * Gets the heading of the robot.
+     * @return The heading of the robot.
+     *
+     */
     public double getHeading() {
         return m_gyro.getAngle();
     }
 
+    /**
+     * Resets the gyroscope and encoders.
+     *
+     */
     public void reset() {
         m_gyro.reset();
+    }
+
+    /**
+     * Stops the robot.
+     */
+    public void stop() {
+        m_drive.stopMotor();
     }
 
     @Override

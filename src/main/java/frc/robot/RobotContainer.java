@@ -35,6 +35,9 @@ public class RobotContainer {
   private final XboxController driveController = new XboxController(Constants.kDriveControllerPort);
   private final XboxController operatorController = new XboxController(Constants.kOperatorControllerPort);
 
+  private final Command m_autonomousCommand = 
+    new RunCommand(() -> m_drive.drive(0.25, 0.25), m_drive).withTimeout(2.5);
+
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -89,6 +92,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return m_autonomousCommand;
   }
 }
