@@ -14,6 +14,9 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.commands.ComplexAuto;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -35,8 +38,14 @@ public class RobotContainer {
   private final XboxController driveController = new XboxController(Constants.kDriveControllerPort);
   private final XboxController operatorController = new XboxController(Constants.kOperatorControllerPort);
 
+  private final SendableChooser<Command> m_chooser = new SendableChooser<>();
+  
+  private final ComplexAuto m_complexAuto = new ComplexAuto(m_drive, m_elevator, m_intake, m_climb, m_shoot);
+  
   private final Command m_autonomousCommand = 
     new RunCommand(() -> m_drive.drive(0.25, 0.25), m_drive).withTimeout(2.5);
+
+
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -57,6 +66,13 @@ public class RobotContainer {
             m_shoot));
     // Configure the button bindings
     configureButtonBindings();
+
+    // Configure chooser
+    m_chooser.setDefaultOption("Simple Auto", m_autonomousCommand);
+    m_chooser.addOption("Complex Auto", m_complexAuto);
+
+    // Add chooser to Shuffleboard
+    Shuffleboard.getTab("Autonomous").add(m_chooser);
   }
 
   /**
@@ -92,6 +108,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autonomousCommand;
+    return m_chooser.getSelected();
   }
 }

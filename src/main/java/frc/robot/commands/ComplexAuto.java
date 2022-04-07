@@ -1,6 +1,6 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.FunctionalCommand;
+// import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 // import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 // import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
@@ -10,6 +10,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
 
 // I'll be honest, I have no clue what any of this does, but it works.
 
@@ -18,11 +19,9 @@ public class ComplexAuto extends SequentialCommandGroup {
         addCommands(
             
             // Thank you to Zack from 1540 for actually knowing how to write this.
-            new FunctionalCommand(
+            new StartEndCommand(
                 () -> driveSubsystem.drive(0.25, 0.25),
-                null, 
-                (interrupted) -> driveSubsystem.drive(0,0), 
-                () -> false, 
+                () -> driveSubsystem.drive(0, 0),
                 driveSubsystem
             ).withTimeout(2.5),
 
