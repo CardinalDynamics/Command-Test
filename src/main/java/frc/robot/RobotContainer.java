@@ -87,17 +87,17 @@ public class RobotContainer {
 
     // Configure your button bindings here
     new JoystickButton(operatorController, XboxController.Button.kA.value)
-        .whenPressed(new RunCommand(m_intake::intake, m_intake));
+        .whenHeld(new RunCommand(m_intake::intake, m_intake));
     new JoystickButton(operatorController, XboxController.Button.kB.value)
-        .whenPressed(new RunCommand(m_intake::reverse, m_intake));
+        .whenHeld(new RunCommand(m_intake::reverse, m_intake));
     new JoystickButton(operatorController, XboxController.Button.kX.value)
-        .whenPressed(new RunCommand(m_elevator::up, m_elevator));
+        .whenHeld(new RunCommand(m_elevator::up, m_elevator));
     new JoystickButton(operatorController, XboxController.Button.kY.value)
-        .whenPressed(new RunCommand(m_elevator::down, m_elevator));
+        .whenHeld(new RunCommand(m_elevator::down, m_elevator));
     new JoystickButton(operatorController, XboxController.Button.kRightBumper.value)
-        .whenPressed(new RunCommand(m_climb::climb, m_climb));
+        .whenHeld(new RunCommand(m_climb::climb, m_climb));
     new JoystickButton(operatorController, XboxController.Button.kLeftBumper.value)
-        .whenPressed(new RunCommand(m_climb::reverse, m_climb));
+        .whenHeld(new RunCommand(m_climb::reverse, m_climb));
 
   }
 

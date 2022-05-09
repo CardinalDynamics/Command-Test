@@ -17,22 +17,22 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final int frontLeftDriveMotorPort = 4;
-    public static final int frontRightDriveMotorPort = 2;
-    public static final int backLeftDriveMotorPort = 3;
-    public static final int backRightDriveMotorPort = 5;
+    public static final int frontLeftDriveMotorPort = 1;
+    public static final int frontRightDriveMotorPort = 4;
+    public static final int backLeftDriveMotorPort = 2;
+    public static final int backRightDriveMotorPort = 3;
 
-    public static final int kFrontShooterPort = 0;
-    public static final int kBackShooterPort = 1;
+    public static final int kFrontShooterPort = 7;
+    public static final int kBackShooterPort = 8;
     public static final double kShooterMotorSpeed = 1.0;
 
-    public static final int kIntakeMotorPort = 2;
+    public static final int kIntakeMotorPort = 6;
     public static final double kIntakeMotorSpeed = 1.0;
 
     public static final int kClimberMotorPort = 3;
     public static final double kClimberMotorSpeed = 1.0;
 
-    public static final int kElevatorMotorPort = 4;
+    public static final int kElevatorMotorPort = 5;
     public static final double kElevatorMotorSpeed = 1.0;
 
     public static final int kDriveControllerPort = 0;

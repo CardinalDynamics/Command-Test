@@ -1,9 +1,11 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+// import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.Command;
 // import edu.wpi.first.wpilibj2.command.FunctionalCommand;
@@ -14,12 +16,12 @@ public class ElevatorSubsystem extends SubsystemBase {
     /**
      * VictorSPX on PWM, runs the elevator.
      */
-    private final PWMVictorSPX elevatorMotor = new PWMVictorSPX(Constants.kElevatorMotorPort);
+    private final CANSparkMax elevatorMotor = new CANSparkMax(Constants.kElevatorMotorPort, MotorType.kBrushless);
 
     /** Creates a new ElevatorSubsystem. */
     public ElevatorSubsystem() {
         super();
-        addChild("ElevatorMotor", elevatorMotor);
+        // addChild("ElevatorMotor", elevatorMotor);
     }
 
     /**

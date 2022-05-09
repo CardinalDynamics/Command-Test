@@ -1,21 +1,23 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+// import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class IntakeSubsystem extends SubsystemBase {
 
     /**
      * VictorSPX on PWM, runs the intake.
      */
-    private final PWMVictorSPX intakeMotor = new PWMVictorSPX(Constants.kIntakeMotorPort);
+    private final CANSparkMax intakeMotor = new CANSparkMax(Constants.kIntakeMotorPort, MotorType.kBrushless);
 
     /** Creates a new IntakeSubsystem. */
     public IntakeSubsystem() {
         super();
-        addChild("IntakeMotor", intakeMotor);
+        // addChild("IntakeMotor", intakeMotor);
     }
 
     /**

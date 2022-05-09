@@ -1,9 +1,12 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+// import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+// import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
@@ -13,17 +16,17 @@ public class ShooterSubsystem extends SubsystemBase {
     /**
      * VictorSPX on PWM, runs the front of the shooter.
      */
-    private final PWMVictorSPX frontShooterMotor = new PWMVictorSPX(Constants.kFrontShooterPort);
+    private final CANSparkMax frontShooterMotor = new CANSparkMax(Constants.kFrontShooterPort, MotorType.kBrushed);
     /**
      * VictorSPX on PWM, runs the back of the shooter.
      */
-    private final PWMVictorSPX backShooterMotor = new PWMVictorSPX(Constants.kBackShooterPort);
+    private final CANSparkMax backShooterMotor = new CANSparkMax(Constants.kBackShooterPort, MotorType.kBrushed);
 
     /** Creates a new ShooterSubsystem. */
     public ShooterSubsystem() {
         super();
-        addChild("ShooterMotor", frontShooterMotor);
-        addChild("ShooterMotor", backShooterMotor);
+        // addChild("ShooterMotor", frontShooterMotor);
+        // addChild("ShooterMotor", backShooterMotor);
     }
 
     /**
