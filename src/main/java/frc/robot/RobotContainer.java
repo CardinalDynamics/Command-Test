@@ -64,6 +64,18 @@ public class RobotContainer {
             () -> m_shoot.shoot(
                 operatorController.getRightTriggerAxis()),
             m_shoot));
+    
+    m_intake.setDefaultCommand(
+        new RunCommand(m_intake::stop, m_intake)
+    );
+
+    m_elevator.setDefaultCommand(
+        new RunCommand(m_elevator::stop, m_elevator)
+    );
+
+    m_climb.setDefaultCommand(
+        new RunCommand(m_climb::stop, m_climb)
+    );
     // Configure the button bindings
     configureButtonBindings();
 
