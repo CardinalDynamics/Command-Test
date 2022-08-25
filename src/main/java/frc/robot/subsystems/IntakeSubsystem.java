@@ -10,7 +10,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class IntakeSubsystem extends SubsystemBase {
 
     /**
-     * VictorSPX on PWM, runs the intake.
+     * Spark MAX on CAN, runs the intake.
      */
     private final CANSparkMax intakeMotor = new CANSparkMax(Constants.kIntakeMotorPort, MotorType.kBrushless);
 

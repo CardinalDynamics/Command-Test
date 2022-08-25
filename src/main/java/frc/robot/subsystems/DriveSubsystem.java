@@ -19,19 +19,31 @@ import frc.robot.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
 
+    private final CANSparkMax m_frontLeft = 
+        new CANSparkMax(Constants.frontLeftDriveMotorPort, MotorType.kBrushless);
+    private final CANSparkMax m_backLeft =
+        new CANSparkMax(Constants.backRightDriveMotorPort, MotorType.kBrushless);
+    
+    private final CANSparkMax m_frontRight = 
+        new CANSparkMax(Constants.frontRightDriveMotorPort, MotorType.kBrushless);
+    private final CANSparkMax m_backRight = 
+        new CANSparkMax(Constants.backRightDriveMotorPort, MotorType.kBrushless);
+
+
     /**
      * Left side of the drivetrain.
      */
     private final MotorController m_leftMotor = new MotorControllerGroup(
-            new CANSparkMax(Constants.frontLeftDriveMotorPort, MotorType.kBrushless),
-            new CANSparkMax(Constants.backLeftDriveMotorPort, MotorType.kBrushless));
+            m_frontLeft,
+            m_backLeft);
 
     /**
      * Right side of the drivetrain.
      */
     private final MotorController m_rightMotor = new MotorControllerGroup(
-            new CANSparkMax(Constants.frontRightDriveMotorPort, MotorType.kBrushless),
-            new CANSparkMax(Constants.backRightDriveMotorPort, MotorType.kBrushless));
+            m_frontRight,
+            m_backRight);
+
 
     /**
      * DifferentialDrive object that handles the movement of the robot.
@@ -61,6 +73,11 @@ public class DriveSubsystem extends SubsystemBase {
         // addChild("Left Encoder", m_leftEncoder);
         // addChild("Right Encoder", m_rightEncoder);
         // addChild("Gyro", m_gyro);
+
+        m_frontLeft.setSmartCurrentLimit(40);
+        m_backLeft.setSmartCurrentLimit(40);
+        m_frontRight.setSmartCurrentLimit(40);
+        m_backRight.setSmartCurrentLimit(40);
     }
 
     /**
