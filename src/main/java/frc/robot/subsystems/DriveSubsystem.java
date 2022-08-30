@@ -22,7 +22,7 @@ public class DriveSubsystem extends SubsystemBase {
     private final CANSparkMax m_frontLeft = 
         new CANSparkMax(Constants.frontLeftDriveMotorPort, MotorType.kBrushless);
     private final CANSparkMax m_backLeft =
-        new CANSparkMax(Constants.backRightDriveMotorPort, MotorType.kBrushless);
+        new CANSparkMax(Constants.backLeftDriveMotorPort, MotorType.kBrushless);
     
     private final CANSparkMax m_frontRight = 
         new CANSparkMax(Constants.frontRightDriveMotorPort, MotorType.kBrushless);
